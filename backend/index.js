@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import userRoute from "./routes/index.js";
 
 const app = express();
+app.use(express.json());
 
 app.use("/api/v1", userRoute);
 app.get("/test", (req, res) => {
