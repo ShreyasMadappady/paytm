@@ -1,7 +1,10 @@
-import express from "express";
+import express, { Router } from "express";
 import mongoose from "mongoose";
+import userRoute from "./routes/index.js";
 
 const app = express();
+
+app.use("/api/v1", userRoute);
 
 mongoose
   .connect(
