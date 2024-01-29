@@ -5,6 +5,9 @@ import userRoute from "./routes/index.js";
 const app = express();
 
 app.use("/api/v1", userRoute);
+app.get("/test", (req, res) => {
+  res.send("HELLOODnewcwewc");
+});
 
 mongoose
   .connect(
