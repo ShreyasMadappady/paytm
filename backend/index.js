@@ -6,9 +6,6 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/v1", userRoute);
-app.get("/test", (req, res) => {
-  res.send("HELLOODnewcwewc");
-});
 
 mongoose
   .connect(
