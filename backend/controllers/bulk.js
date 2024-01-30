@@ -1,7 +1,29 @@
-import { User } from "../model/db";
+import { User } from "../model/db.js";
 
 export const bulk = async (req, res) => {
- const users =  await User.find({});
- res.status(200).json()
+  const filter = req.query.filter || "";
 
+  const users = await User.find({
+    $or: [
+      {
+        firstName: {
+          $regex: filter,
+        },
+      },
+      {
+        lastName: {
+          $regex: filter,
+        },
+      },
+    ],
+  });
+
+  res.json({
+    user: users.map((user) => ({
+      username: user.username,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      _id: user._id,
+    })),
+  });
 };
